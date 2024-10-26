@@ -1,0 +1,356 @@
+*,*::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --base: #e96269;          /* Primary medium shade */
+    --base-100: #fce5e7;      /* Very light pink */
+    --base-400: #e96269;      /* Same as base */
+    --base-800: #d43d4b;      /* Happier dark red */
+    --yellow: #f78c85;        /* Medium pink-orange */
+    --yellow-100: #ffe6e5;    /* Light peach */
+    --yellow-400: #f78c85;    /* Same as yellow */
+    --yellow-800: #c6534b;    /* Brighter dark pink-orange */
+    --blue: #b5545e;          /* Medium red-violet */
+    --blue-100: #f7d1d4;      /* Light blush pink */
+    --blue-400: #df707b;      /* Brighter red-pink */
+    --blue-800: #a63a43;      /* Happier dark red-violet */
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--blue);
+    &::hover {
+        text-decoration: underline;
+    }
+}
+
+header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin:auto;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+
+    .logo-holder {
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        font-weight: 600;
+        color: var(--base-800);
+        .logo {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            padding-top: 8px;
+            font-size: 32px;
+            background-color: var(--base-800);
+            color: var(--base-100);
+            height: 64px;
+            width: 64px;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+        .logo-text {
+            flex:1;
+        }
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+
+        ul {
+            display: flex;
+            list-style-type: none;
+            gap: 5px;
+
+            li {
+                display: inline-block;
+
+                a {
+                    display: inline-block;
+                    padding: 10px 20px;
+                    color: var(--base);
+                    &:hover{
+                        background: var(--base-100);
+                        border-radius: 10px;
+                        text-decoration: none;
+                    }
+
+                }
+            }
+        }
+         /* Fixing the selector for mobile-toggle */
+        .mobile-toggle {
+            display: none;
+            color: var(--base-800);
+            padding: 10px;
+
+            /* Show hamburger icon on screens smaller than 768px */
+            @media (max-width: 768px) {
+                display: inline-block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+        }
+    }
+    @media (max-width:1024px){
+        flex-direction: column;
+        align-items: center;
+    }
+    @media (max-width: 768px){
+        flex-direction: column;
+        align-items: center;
+        nav {
+            margin-top: 10px;
+            width: 100%;
+            ul{
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+                a{
+                    width:100%;
+                }
+                &.active{
+                    display: flex; 
+                }
+            }
+        }
+    }
+}
+
+.container {
+    max-width: 1440px;
+    margin: auto;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    @media(max-width:1440px){
+        padding-left: 30px;
+        padding-right: 30px;;
+    }
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: var(--yellow-800); /* Use the pink-orange for contrast */
+    color: white;
+    border-radius: 10px;
+    transition: ease 0.3s all;
+    
+    &:hover {
+        text-decoration: none;
+        color: white;
+        background-color: var(--base-800); /* Happier dark red on hover */
+    }
+    &.white {
+		background-color: white;
+    color: var(--base-800);
+    
+    &:hover {
+        background-color: var(--yellow-100); /* Light peach on hover */
+        color: var(--base); /* Pinkish red text on hover */
+    }
+	}
+	&.black {
+		background-color: var(--base-800);
+		color: white;
+		&:hover {
+			background-color: var(--base-100);
+			color: var(--base-800);
+		}
+	}
+}
+
+h1 {
+    font-size: 64px;
+    line-height: 1;
+    margin-bottom: 10px;
+        small {
+            display: block;
+            font-weight: 100;
+        }
+        @media (max-width:1024px){
+            font-size: 48px;
+        }
+} 
+
+.hero {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    padding: 50px;
+        @media(max-width:1024px) {
+            flex-direction: column;
+        }
+
+        .hero-blue {
+            flex:1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-right: 30px;
+            background-color: var(--blue-100);
+            border-radius: 30px;
+            padding: 30px;
+                span{
+                    @media(max-width:768px){
+                        display: none;
+                    }
+                }
+                .call-to-action {
+                    margin-top: 20px;
+                    margin: botton 20px;
+                        a{
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                        }
+                }
+            .social-links {
+                a {
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        .hero-yellow {
+            flex: 1;
+            background-color: var(--yellow); /* Use your yellow background */
+            border-radius: 30px;
+            padding: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* To adjust the position of the image */
+            img {
+                max-width: 100%; /* Ensure image is responsive */
+                height: auto;
+                object-fit: cover; /* Ensure the image fits within the div */
+                position: relative;
+                z-index: 1; /* Make sure the image is above the background */
+                margin-top: -100px; /* Adjust the margin to fit better with the background */
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+                margin-bottom: -15px;
+            
+            .hero-yellow img {
+                width: 100%; /* Image takes the full width of the div */
+                max-width: 420px; /* Set a maximum width for the image */
+                height: auto; /* Maintain the aspect ratio of the image */
+                object-fit: contain; /* Ensures the image fits inside the div without overflow */
+                margin-bottom: -10px; /* Fine-tune margin to align better with the div */
+            }
+        }
+    }
+}
+
+.logos {
+    background-color: var(--base-100);
+    border-radius: 30px;
+    padding:30px 0px;
+    @media (max-width:1440px) {
+        border-radius: 0px;
+    }
+    .marquee {
+        width: 100vw;
+        max-width: 100%;
+        height: 128px;
+        overflow:hidden;
+        position: relative;
+        .track {
+            position: absolute;
+            white-space: nowrap;
+            will-change: transform;
+            animation: marquee 40s linear infinite;
+            display: flex;
+            gap: 50px;
+        }
+    }
+}
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+    
+}
+
+h2 {
+    font-size:64px;
+	line-height:1;
+	margin-bottom:10px;
+	text-align:center;
+	color: var(--base-800);
+	padding:30px;
+    small {
+        display:block;
+		font-weight:100;
+		font-size:0.5em;
+		color:var(--base);
+    }
+    @media (max-width:1024px) {
+        font-size:48px;
+    }
+}
+
+h3 {
+	font-size:32px;
+	font-weight:600;
+	line-height:1;
+	margin-bottom:20px;
+	color: var(--base-800);
+}
+
+.skills {
+    .holder-blue {
+        background-color: var(--blue-100);
+		border-radius:30px;
+		padding:30px;
+		display:flex;
+        @media(max-width:1024px){
+			flex-direction:column;
+		}
+
+        .left-column {
+			flex:1;
+			ul {
+				list-style-type: none;
+				gap:10px;
+				margin-right:100px;
+				margin-bottom:20px;
+				li {
+					display:inline-block;
+					background-color: var(--blue-400);
+					padding:10px 20px;
+					border-radius:15px;
+					margin-bottom:10px;
+				}
+			}
+		}
+        .right-column {
+            flex: 1;
+            p {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
